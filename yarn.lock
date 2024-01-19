@@ -2871,6 +2871,13 @@
   resolved "https://registry.yarnpkg.com/@mdx-js/util/-/util-1.6.22.tgz#219dfd89ae5b97a8801f015323ffa4b62f45718b"
   integrity sha512-H1rQc1ZOHANWBvPcW+JpGwr+juXSxM8Q8YCkm3GhZd8REu1fHR3z99CErO1p9pkcfcxZnMdIZdIsXkOHY0NilA==
 
+"@meshsdk/react@1.1.9":
+  version "1.1.9"
+  resolved "https://registry.yarnpkg.com/@meshsdk/react/-/react-1.1.9.tgz#ac32b6701ecd3a2bcb38e2bd6ee5da6ef6c49d61"
+  integrity sha512-LeQVi9CArHI/6Mlcy3B7GYxX6V2Up8Br3h0lgZvPdAeKjWhslJ0i8FIaiTp94gy2dSqTensD1XC/+GroMz50NA==
+  dependencies:
+    styled-components "5.3.6"
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"
