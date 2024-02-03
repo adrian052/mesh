@@ -7,3 +7,4 @@ export * from './useRewardAddress';
 export * from './useWallet';
 export * from './useWalletSubmit';
 export * from './useWalletTx';
+export * from './useWalletListRaw';

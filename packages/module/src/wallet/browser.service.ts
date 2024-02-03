@@ -30,6 +30,16 @@ export class BrowserWallet implements IInitiator, ISigner, ISubmitter {
       }));
   }
 
+  static getInstalledWalletsRaw(): Wallet[] {
+    if (window.cardano === undefined) return [];
+
+    return Object.keys(window.cardano).map((wallet) => ({
+      name: window.cardano[wallet].name,
+      icon: window.cardano[wallet].icon,
+      version: window.cardano[wallet].apiVersion,
+    }));
+  }
+
   static async enable(walletName: string): Promise<BrowserWallet> {    
     try {
       const walletInstance = await BrowserWallet.resolveInstance(walletName);
@@ -40,6 +50,19 @@ export class BrowserWallet implements IInitiator, ISigner, ISubmitter {
       throw new Error(`Couldn't create an instance of wallet: ${walletName}`);
     } catch (error) {
       throw new Error(`[BrowserWallet] An error occurred during enable: ${JSON.stringify(error)}.`);
+    }
+  }
+
+  static async enableRaw(walletName: string): Promise<BrowserWallet> {
+    try {
+      const walletInstance = await BrowserWallet.resolveInstanceRaw(walletName);
+
+      if (walletInstance !== undefined)
+        return new BrowserWallet(walletInstance);
+
+      throw new Error(`Couldn't create an instance of wallet: ${walletName}`);
+    } catch (error) {
+      throw new Error(`[BrowserWallet] An error occurred during enableRaw: ${JSON.stringify(error)}.`);
     }
   }
 
@@ -190,6 +213,13 @@ export class BrowserWallet implements IInitiator, ISigner, ISubmitter {
       .find((sw) => sw.name.toLowerCase() === walletName.toLowerCase());
 
     return wallet?.enable();
+  }
+
+  private static resolveInstanceRaw(walletName: string) {
+    if (window.cardano === undefined)
+      return undefined;
+
+    return window.cardano[walletName.toLowerCase()]?.enable();
   }
 }
 
